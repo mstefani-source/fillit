@@ -6,7 +6,7 @@
 /*   By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 14:04:24 by skale             #+#    #+#             */
-/*   Updated: 2019/11/08 13:34:26 by mstefani         ###   ########.fr       */
+/*   Updated: 2019/11/12 20:12:18 by mstefani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int ft_up_left(int k)
 	return (k);
 }
 
-void ft_error(int k)
+int		ft_error(int k)
 {
 	if (k != 34952 && k != 61440 && k != 52224 && k != 35008)
 	{
@@ -34,12 +34,13 @@ void ft_error(int k)
 					if (k != 19520 && k != 35968 && k != 58368)
 					{
 						write(1, "error\n", 6);
-						return ;
+						return (-1);
 					}
 				}
 			}
 		}
 	}
+	return (1);
 }
 int *ft_makeup(int fd)
 {
@@ -71,7 +72,6 @@ int *ft_makeup(int fd)
 			j++;
 		i++;
 	}
-//	printf("%s", str);
 	if (!(new = (int*)malloc(sizeof(int) * (j + 1))))
 			return (0);
 	i = 0;
@@ -81,7 +81,11 @@ int *ft_makeup(int fd)
 		if (str[i] == '\n' && (str[i + 1] == '\n' || str[i + 1] == '\0'))
 		{
 			new[j] = ft_up_left(k);
-			ft_error(new[j]);
+			if (ft_error(new[j]) < 0)
+				{
+					printf("invalid file\n");
+					return(NULL);
+				}
 			j++;
 			k = 0;
 		}

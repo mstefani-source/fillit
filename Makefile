@@ -6,7 +6,7 @@
 #    By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 17:09:34 by mstefani          #+#    #+#              #
-#    Updated: 2019/11/09 22:22:20 by mstefani         ###   ########.fr        #
+#    Updated: 2019/11/12 21:34:42 by mstefani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,9 @@ SRC = fillit.c \
 		ft_greate_first_list.c \
 		ft_print_res.c \
 		ft_add_list.c \
-	    ft_l.c
+	    ft_l.c \
+		ft_sort_list.c \
+		ft_descent.c
 
 LIBOBJ=$(SRC:.c=.o)
 

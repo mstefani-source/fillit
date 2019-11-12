@@ -6,7 +6,7 @@
 /*   By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 17:54:06 by mstefani          #+#    #+#             */
-/*   Updated: 2019/11/09 22:36:11 by mstefani         ###   ########.fr       */
+/*   Updated: 2019/11/12 23:09:54 by mstefani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@ int main(int argc, char **argv)
     }
     else
     {
-    	tet = ft_makeup(fd);  
+    	tet = ft_makeup(fd);
+		if (!tet)
+			return(0); 
     	fd = open(argv[1], O_RDONLY);
     	num_tet = ft_calc(fd);
     }
@@ -45,11 +47,17 @@ int main(int argc, char **argv)
 	Xmax = Ymax = field;
 	result = ft_greate_first_list(tet[0], 'A');
 	test = result;
-
 	while (++i < num_tet)
 			test = ft_add_list(test, tet[i], ('A'+ i));
-	test = ft_l(result, 3);
 	ft_print_res(result);
-	printf("test-letter = %c\n",test->letter);
+	printf("=====\n");
+	ft_sort_list(result, ft_descent);	
+//	printf("1\n");
+//	test = ft_l(result, 3);
+//	ft_print_res(result);
+//	test = ft_sort_list(result, num_tet);
+//	printf("=====\n");
+	ft_print_res(result);
+//	printf("test-letter = %c\n",test->letter);
 	return(0);
 }

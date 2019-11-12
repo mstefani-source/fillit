@@ -6,7 +6,7 @@
 /*   By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 18:16:58 by mstefani          #+#    #+#             */
-/*   Updated: 2019/11/12 23:16:16 by mstefani         ###   ########.fr       */
+/*   Updated: 2019/11/12 23:24:01 by mstefani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_tetr		*ft_sort_list(t_tetr *list, int (*cmp)(int, int), int num_tet)
 	char 	bufchar;
 	int		flag = 1;
 
-	while (flag < num_tet)
+	while (flag < (num_tet*num_tet))
 	{
 		flag++;
 		while (list)

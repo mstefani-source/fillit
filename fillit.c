@@ -6,7 +6,7 @@
 /*   By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 17:54:06 by mstefani          #+#    #+#             */
-/*   Updated: 2019/11/12 23:09:54 by mstefani         ###   ########.fr       */
+/*   Updated: 2019/11/12 23:35:50 by mstefani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,8 @@ int main(int argc, char **argv)
 			test = ft_add_list(test, tet[i], ('A'+ i));
 	ft_print_res(result);
 	printf("=====\n");
-	ft_sort_list(result, ft_descent);	
-//	printf("1\n");
-//	test = ft_l(result, 3);
-//	ft_print_res(result);
-//	test = ft_sort_list(result, num_tet);
-//	printf("=====\n");
+	ft_sort_list(result, ft_descent ,num_tet);	
 	ft_print_res(result);
-//	printf("test-letter = %c\n",test->letter);
+	printf("first list = %d\n",ft_l(result, 0)->tetr & ft_l(result, 1)->tetr >> 4);
 	return(0);
 }

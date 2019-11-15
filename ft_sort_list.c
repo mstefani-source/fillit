@@ -6,37 +6,41 @@
 /*   By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 18:16:58 by mstefani          #+#    #+#             */
-/*   Updated: 2019/11/12 23:24:01 by mstefani         ###   ########.fr       */
+/*   Updated: 2019/11/15 14:06:47 by mstefani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_tetr		*ft_sort_list(t_tetr *list, int (*cmp)(int, int), int num_tet) 
+t_tetr		*ft_sort_list(t_tetr *list, int (*cmp)(int, int)) 
 {
 	int		buf;
 	char 	bufchar;
+	t_tetr*	guf;
 	int		flag = 1;
 
-	while (flag < (num_tet*num_tet))
+	guf = list;
+	while (flag)
 	{
-		flag++;
+		flag = 0;
 		while (list)
 		{
 			if (list->next)
+			{	
+				if (cmp(list->tetr, (list->next)->tetr))
 				{
-					if (cmp(list->tetr, (list->next)->tetr))
-					 {
-					 	buf = (list->next)->tetr;
-					 	bufchar = (list->next)->letter;
-					 	(list->next)->tetr = list->tetr;
-					 	(list->next)->letter = list->letter;
-					 	list->tetr = buf;
-					 	list->letter = bufchar;
-					 }
+					buf = (list->next)->tetr;
+					bufchar = (list->next)->letter;
+					(list->next)->tetr = list->tetr;
+					(list->next)->letter = list->letter;
+					list->tetr = buf;
+					list->letter = bufchar;
+					flag = 1;
 				}
+			}
 			list = list->next;
 		}
+		list = guf;
 	}
-return(list);	
+return (list);	
 }

@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_res.c                                     :+:      :+:    :+:   */
+/*   ft_find_crd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/08 16:09:54 by mstefani          #+#    #+#             */
-/*   Updated: 2019/11/14 16:42:21 by mstefani         ###   ########.fr       */
+/*   Created: 2019/11/15 17:44:59 by mstefani          #+#    #+#             */
+/*   Updated: 2019/11/15 18:03:31 by mstefani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "fillit.h"
 
-void	ft_print_res(t_tetr* result)
+int		ft_find_crd(int tetr1, int tetr2, int x1, int y1, int x2, int y2, size_t field)
 {
-	printf("tetra ch x y\n");
-	while (result)
-	{
-		printf("%d %c  %zu %zu\n",result->tetr, result->letter, result->x, result->y);
-		result = result->next;
+	if (!(tetr1<<x2<<(y2*4) & tetr2))
+		return (1);	 
+	if ((x2 + 4) >= field)
+	{			
+ 		if ((tetr2>>x2) & 4369)
+	 	{
+	 		printf("impossible to move right!\n");
+			x1 = 0;
+			y2++; 
+	 	}
 	}
+	x2++;
+	if (ft_find_crd(tetr1, tetr2, x1, y1, x2, y2, field) == 1)
+		{
+		printf("place fouded! x = %zu y = %zu\n",x2, y2);
+		return(1);
+		}
+	return (0);
 }

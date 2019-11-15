@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_res.c                                     :+:      :+:    :+:   */
+/*   ft_list_test.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/08 16:09:54 by mstefani          #+#    #+#             */
-/*   Updated: 2019/11/14 16:42:21 by mstefani         ###   ########.fr       */
+/*   Created: 2019/11/13 13:48:09 by mstefani          #+#    #+#             */
+/*   Updated: 2019/11/13 16:54:49 by mstefani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	ft_print_res(t_tetr* result)
+void	ft_list_test(int tetr1, int tetr2)
 {
-	printf("tetra ch x y\n");
-	while (result)
-	{
-		printf("%d %c  %zu %zu\n",result->tetr, result->letter, result->x, result->y);
-		result = result->next;
-	}
+	int		i = 0;
+	if ((tetr1 & tetr2) == 0)
+			{
+				printf("сдвинули на %d\n", i);
+				return ;
+			}
+	i++;
+	ft_list_test(tetr1 << 1, tetr2);
+	return ;
 }

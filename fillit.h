@@ -6,7 +6,7 @@
 /*   By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 17:56:59 by mstefani          #+#    #+#             */
-/*   Updated: 2019/11/12 23:24:59 by mstefani         ###   ########.fr       */
+/*   Updated: 2019/11/15 19:04:56 by mstefani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,20 @@ typedef struct		s_tetr
 	size_t			y;
 	char			letter;
 }					t_tetr;
+
 int					*ft_makeup (int fd);
 int					ft_calc (int fd);
-int					ft_descent(int a, int b);
-int					ft_calc_field (int num_tet);
-void				ft_print_res (t_tetr* result);
-int					ft_cmp_list (t_tetr* list1, t_tetr* list2);
-t_tetr*				ft_greate_first_list (int tetr, char letter);
-t_tetr*				ft_add_list (t_tetr* result, int tet, char letter);
-t_tetr*				ft_l (t_tetr* list, int num);
-t_tetr*				ft_sort_list(t_tetr *list, int (*cmp)(int, int), int num_tet);
-void				ft_swap_list(t_tetr* first, t_tetr* second);
+int					ft_descent (int a, int b);
+size_t				ft_calc_field (int num_tet);
+int					ft_cmp_list (t_tetr *list1, t_tetr *list2);
+int					ft_find_coord (t_tetr *tetr1, t_tetr *tetr2, size_t field);
+void				ft_print_res (t_tetr *result);
+int					ft_match_or_not (t_tetr *tetr1, t_tetr *tetr2);
+void				ft_movedown (int tetr1, int tetr2, int *y);
+void				ft_moveright (t_tetr *first, t_tetr *second);
+void				ft_list_test (int tetr1, int tetr2);
+t_tetr				*ft_greate_first_list (int tetr, char letter);
+t_tetr				*ft_add_list (t_tetr *result, int tet, char letter);
+t_tetr				*ft_l (t_tetr *list, int num);
+t_tetr				*ft_sort_list (t_tetr *list, int (*cmp)(int, int));
 #endif

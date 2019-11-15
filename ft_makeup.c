@@ -6,17 +6,17 @@
 /*   By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 14:04:24 by skale             #+#    #+#             */
-/*   Updated: 2019/11/12 20:12:18 by mstefani         ###   ########.fr       */
+/*   Updated: 2019/11/15 19:26:37 by mstefani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int ft_up_left(int k)
+int		ft_up_left(int k)
 {
 	while (k < 0b1000000000000)
 		k = k << 4;
-	while ((0b1000100010001000&k) == 0)
+	while ((0b1000100010001000 & k) == 0)
 		k = k << 1;
 	return (k);
 }
@@ -42,7 +42,8 @@ int		ft_error(int k)
 	}
 	return (1);
 }
-int *ft_makeup(int fd)
+
+int		*ft_makeup(int fd)
 {
 	static char	*str;
 	char		buf[BUFF_SIZE + 1];
@@ -65,7 +66,7 @@ int *ft_makeup(int fd)
 	while (str[i] != '\0')
 	{
 		if (str[i] == '.')
-			str[i] = '0';		
+			str[i] = '0';
 		if (str[i] == '#')
 			str[i] = '1';
 		if (str[i] == '\n' && str[i + 1] == '\n')
@@ -73,7 +74,7 @@ int *ft_makeup(int fd)
 		i++;
 	}
 	if (!(new = (int*)malloc(sizeof(int) * (j + 1))))
-			return (0);
+		return (0);
 	i = 0;
 	j = 0;
 	while (str[i] != '\0')
@@ -82,10 +83,10 @@ int *ft_makeup(int fd)
 		{
 			new[j] = ft_up_left(k);
 			if (ft_error(new[j]) < 0)
-				{
-					printf("invalid file\n");
-					return(NULL);
-				}
+			{
+				printf("invalid file\n");
+				return (NULL);
+			}
 			j++;
 			k = 0;
 		}

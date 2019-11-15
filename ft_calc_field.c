@@ -6,17 +6,18 @@
 /*   By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 18:26:45 by mstefani          #+#    #+#             */
-/*   Updated: 2019/11/08 13:31:27 by mstefani         ###   ########.fr       */
+/*   Updated: 2019/11/15 19:16:54 by mstefani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int     ft_calc_field(int num_tet)
+size_t	ft_calc_field(int num_tet)
 {
-    int     pre = num_tet * 4;
+	int	pre;
 
-    while (ft_sqrt(pre) == 0)
-        pre++;
-    return (ft_sqrt(pre));
+	pre = num_tet * 4;
+	while (ft_sqrt(pre) == 0)
+		pre++;
+	return (ft_sqrt(pre));
 }

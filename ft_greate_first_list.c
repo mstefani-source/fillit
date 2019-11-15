@@ -6,24 +6,24 @@
 /*   By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 14:09:35 by mstefani          #+#    #+#             */
-/*   Updated: 2019/11/11 22:19:07 by mstefani         ###   ########.fr       */
+/*   Updated: 2019/11/15 19:07:49 by mstefani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_tetr*		ft_greate_first_list(int tetr, char letter)
+t_tetr		*ft_greate_first_list(int tetr, char letter)
 {
-    t_tetr*	ttetr;
+	t_tetr	*ttetr;
 
-		ttetr = malloc(sizeof(t_tetr));
-		if(!ttetr)
-			return(0);
-		ttetr->next = NULL;
-		ttetr->prev = NULL;
-		ttetr->tetr = tetr;
-		ttetr->x = 0;
-		ttetr->y = 0;
-		ttetr->letter = letter;
-	return(ttetr);
+	ttetr = malloc(sizeof(t_tetr));
+	if (!ttetr)
+		return (0);
+	ttetr->next = NULL;
+	ttetr->prev = NULL;
+	ttetr->tetr = tetr;
+	ttetr->x = 0;
+	ttetr->y = 0;
+	ttetr->letter = letter;
+	return (ttetr);
 }

@@ -6,7 +6,7 @@
 /*   By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 14:40:49 by mstefani          #+#    #+#             */
-/*   Updated: 2019/10/30 21:56:23 by mstefani         ###   ########.fr       */
+/*   Updated: 2019/11/13 17:44:58 by mstefani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int					ft_isascii(int c);
 int					ft_isupper(int c);
 int					ft_islower(int c);
 int					ft_atoi(const char *st);
+int					ft_atoi_base(char *s, int rate);
 void				ft_striter(char *s, void (*f)(char *));
 void				ft_striteri(char *s, void (*f)(unsigned int, char *));
 void				ft_strclr(char *s);
@@ -87,6 +88,7 @@ char				*ft_strtrim(char const *s);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
 char				*ft_itoa(int n);
 char				*ft_itoa_b(int n);      // make binar string from int 
+char				*ft_itoa_base(int value, int base);
 int					ft_overlong(long int d, int sign, char c);
 int					ft_leni(long long int n);
 t_list				*ft_lstnew(void const *content, size_t content_size);

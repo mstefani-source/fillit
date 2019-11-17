@@ -6,7 +6,7 @@
 /*   By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 17:56:59 by mstefani          #+#    #+#             */
-/*   Updated: 2019/11/15 19:04:56 by mstefani         ###   ########.fr       */
+/*   Updated: 2019/11/17 19:05:00 by mstefani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct		s_tetr
 {
 	struct s_tetr	*next;
 	struct s_tetr	*prev;
-	int				tetr;
+	long long unsigned int				tetr;
 	size_t			x;
 	size_t			y;
 	char			letter;
@@ -33,7 +33,7 @@ int					ft_calc (int fd);
 int					ft_descent (int a, int b);
 size_t				ft_calc_field (int num_tet);
 int					ft_cmp_list (t_tetr *list1, t_tetr *list2);
-int					ft_find_coord (t_tetr *tetr1, t_tetr *tetr2, size_t field);
+int					ft_find_coord (t_tetr *tetr2, size_t x, size_t y, size_t field);
 void				ft_print_res (t_tetr *result);
 int					ft_match_or_not (t_tetr *tetr1, t_tetr *tetr2);
 void				ft_movedown (int tetr1, int tetr2, int *y);

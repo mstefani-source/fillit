@@ -19,6 +19,7 @@ int		main(int argc, char **argv)
 	int		fd;
 	int		*tet;
 	int		num_tet;
+	int 	match;
 	t_tetr	*result;
 	t_tetr	*test;
 
@@ -52,10 +53,11 @@ int		main(int argc, char **argv)
 	//ft_sort_list(result, ft_descent);
 	ft_print_res(result);
 
-	ft_find_coord(ft_l(result,1),ft_l(result,1)->x, ft_l(result,1)->y, field);
-    printf("=============================================\n");
-	// ft_print_res(result);
-	// ft_find_coord(ft_l(result,2),ft_l(result,2)->x, ft_l(result,2)->y, field);
+	match = ft_not_match(ft_l(result, 0),ft_l(result,1),ft_l(result,1)->x, ft_l(result,1)->y, field);
+    
+	//ft_find_place( 
+			
+	printf("=============================================\n");
 
 	ft_print_res(result);
 	return (0);

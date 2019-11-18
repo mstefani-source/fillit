@@ -18,22 +18,22 @@
 # include <stdio.h>
 # include <fcntl.h>
 
-typedef struct		s_tetr
+typedef struct				s_tetr
 {
-	struct s_tetr	*next;
-	struct s_tetr	*prev;
-	long long unsigned int				tetr;
-	size_t			x;
-	size_t			y;
-	char			letter;
-}					t_tetr;
+	struct s_tetr			*next;
+	struct s_tetr			*prev;
+	long long unsigned int	t;
+	size_t					x;
+	size_t					y;
+	char					letter;
+}							t_tetr;
 
 int					*ft_makeup (int fd);
 int					ft_calc (int fd);
 int					ft_descent (int a, int b);
 size_t				ft_calc_field (int num_tet);
 int					ft_cmp_list (t_tetr *list1, t_tetr *list2);
-int					ft_find_coord (t_tetr *tetr2, size_t x, size_t y, size_t field);
+int					ft_not_match (t_tetr *t1 ,t_tetr *t2, size_t x, size_t y, size_t field);
 void				ft_print_res (t_tetr *result);
 int					ft_match_or_not (t_tetr *tetr1, t_tetr *tetr2);
 void				ft_movedown (int tetr1, int tetr2, int *y);

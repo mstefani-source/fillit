@@ -27,13 +27,13 @@ t_tetr		*ft_sort_list(t_tetr *list, int (*cmp)(int, int))
 		{
 			if (list->next)
 			{	
-				if (cmp(list->tetr, (list->next)->tetr))
+				if (cmp(list->t, (list->next)->t))
 				{
-					buf = (list->next)->tetr;
+					buf = (list->next)->t;
 					bufchar = (list->next)->letter;
-					(list->next)->tetr = list->tetr;
+					(list->next)->t = list->t;
 					(list->next)->letter = list->letter;
-					list->tetr = buf;
+					list->t = buf;
 					list->letter = bufchar;
 					flag = 1;
 				}

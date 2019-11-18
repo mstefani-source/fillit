@@ -25,7 +25,7 @@ SRC = fillit.c \
 		ft_sort_list.c \
 		ft_descent.c \
 		ft_list_test.c \
-		ft_find_coord.c 
+		ft_not_match.c 
 
 LIBOBJ=$(SRC:.c=.o)
 

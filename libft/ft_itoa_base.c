@@ -14,7 +14,7 @@
 
 char	*ft_itoa_base(int value, int base)
 {
-	unsigned int n = ((base == 10 && value < 0) ? -value : (unsigned int)value);
+	unsigned int n = ((base == 10 && value < 0) ? -value : value);
 	int i = 0;
 
 	if (value == 0 || (value < 0 && base == 10))
@@ -32,7 +32,7 @@ char	*ft_itoa_base(int value, int base)
 		out[0] = '-';
 	if (value == 0)
 		out[0] = '0';
-	n = ((base == 10 && value < 0) ? -value : (unsigned int)value);
+	n = ((base == 10 && value < 0) ? -value : value);
 	while (n != 0)
 	{
 		--i;

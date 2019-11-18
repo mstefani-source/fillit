@@ -21,7 +21,7 @@ t_tetr		*ft_greate_first_list(int tetr, char letter)
 		return (0);
 	ttetr->next = NULL;
 	ttetr->prev = NULL;
-	ttetr->tetr = tetr;
+	ttetr->t = tetr;
 	ttetr->x = 0;
 	ttetr->y = 0;
 	ttetr->letter = letter;

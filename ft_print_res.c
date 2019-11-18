@@ -17,7 +17,7 @@ void	ft_print_res(t_tetr* result)
 	printf("tetra ch x y\n");
 	while (result)
 	{
-		printf("%llu %c  %zu %zu\n",result->tetr, result->letter, result->x, result->y);
+		printf("%llu %c  %zu %zu\n",result->t, result->letter, result->x, result->y);
 		result = result->next;
 	}
 }

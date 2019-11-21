@@ -6,7 +6,7 @@
 /*   By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 17:56:59 by mstefani          #+#    #+#             */
-/*   Updated: 2019/11/17 19:05:00 by mstefani         ###   ########.fr       */
+/*   Updated: 2019/11/21 16:41:07 by mstefani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,10 @@ t_tetr				*ft_greate_first_list (int tetr, char letter);
 t_tetr				*ft_add_list (t_tetr *result, int tet, char letter);
 t_tetr				*ft_l (t_tetr *list, int num);
 t_tetr				*ft_sort_list (t_tetr *list, int (*cmp)(int, int));
+int					ft_find_X(t_tetr* t1, t_tetr* t2, size_t x, size_t y, size_t* field);
+int					ft_find_Y(t_tetr* t1, t_tetr* t2, size_t x, size_t y, size_t* field);
+int					ft_mleft(int d, int offcet);
+int					ft_mup(int d, int offcet);
+int					ft_puzzle(t_tetr* tet, int num, size_t* field);
+int					print_res(t_tetr* lst, int dlina);
 #endif

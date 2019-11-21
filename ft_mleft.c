@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_l.c                                             :+:      :+:    :+:   */
+/*   ft_mleft.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/09 21:30:02 by mstefani          #+#    #+#             */
-/*   Updated: 2019/11/14 14:10:38 by skale            ###   ########.fr       */
+/*   Created: 2019/11/20 16:51:39 by mstefani          #+#    #+#             */
+/*   Updated: 2019/11/20 20:48:02 by mstefani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+int		ft_move(int d)
+{
+	return (((d | 34952) ^ 34952) << 1);
+}
 
-t_tetr*  ft_l(t_tetr* list, int num)
+int		ft_mleft(int d, int offcet)
 {
 	int i = 0;
-
-	while (i < num)
+	
+	while (i < offcet)
 	{
-		list = list->next;
+		d = ft_move(d);
 		i++;
 	}
-	return (list);
+	return (d);
 }

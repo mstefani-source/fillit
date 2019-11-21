@@ -6,7 +6,7 @@
 #    By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 17:09:34 by mstefani          #+#    #+#              #
-#    Updated: 2019/11/14 15:12:48 by mstefani         ###   ########.fr        #
+#    Updated: 2019/11/21 16:40:44 by mstefani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,13 @@ SRC = fillit.c \
 		ft_sort_list.c \
 		ft_descent.c \
 		ft_list_test.c \
-		ft_not_match.c 
+		ft_not_match.c \
+		ft_find_X.c \
+		ft_find_Y.c \
+		ft_mleft.c \
+		ft_mup.c \
+		ft_puzzle.c \
+		print_res.c
 
 LIBOBJ=$(SRC:.c=.o)
 

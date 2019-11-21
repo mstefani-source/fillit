@@ -6,7 +6,7 @@
 #    By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/09 16:30:02 by mstefani          #+#    #+#              #
-#    Updated: 2019/11/13 17:24:40 by mstefani         ###   ########.fr        #
+#    Updated: 2019/11/19 19:13:20 by mstefani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,6 @@ SRC = ft_atoi.c \
 		ft_strtrim.c \
 		ft_tolower.c \
 		ft_toupper.c \
-		ft_atoi_base.c \
 		ft_itoa_base.c 
 		
 CFLAGS = -Wall -Werror -Wextra

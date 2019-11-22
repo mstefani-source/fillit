@@ -6,7 +6,7 @@
 /*   By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 17:54:06 by mstefani          #+#    #+#             */
-/*   Updated: 2019/11/21 19:16:48 by mstefani         ###   ########.fr       */
+/*   Updated: 2019/11/22 11:03:04 by mstefani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int		main(int argc, char **argv)
 		num_tet = ft_calc(fd);
 	}
 	field = ft_calc_field(num_tet);
-	printf("i am calculated field =%zu\n", field);
 	result = ft_greate_first_list(tet[0], 'A');
 	test = result;
 	while (++i < num_tet)
@@ -54,10 +53,9 @@ int		main(int argc, char **argv)
 	ft_print_res(result);
 	ft_puzzle(result, num_tet, &field);
 	
-
-	printf("=============================================\n");
+	printf("===============fillit.c=======================\n");
 	ft_print_res(result);
-	printf("=============================================\n");
+	printf("===============fillit.c======================\n");
 	print_res(result, field);
 	return (0);
 }

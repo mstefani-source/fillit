@@ -6,51 +6,51 @@
 /*   By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 19:07:52 by mstefani          #+#    #+#             */
-/*   Updated: 2019/11/22 19:14:58 by mstefani         ###   ########.fr       */
+/*   Updated: 2019/11/29 18:53:34 by mstefani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		ft_find_X(t_tetr* t1, t_tetr* t2, size_t x, size_t y, size_t* field)
-{
-	if((t1->x + x) >= *field)
+int		ft_find_X(t_tetr* list, t_tetr* t, size_t* field)
+ {
+	size_t 	x = 0;
+	size_t 	y = 0;
+	size_t 	offset_X;
+	size_t	offset_Y;
+	int		res = 1;
+	
+	while (list->letter != t->letter)
 	{
-		printf("*field = %zu\n", *field);
-		printf("t1->x = %zu ", t1->x);
-		printf("x = %zu\n", x);
-		printf("хуй\n");
+	
+		res = 0;
+		x = 0;
+		y = 0;
+		offset_X = ft_abs(list->x - t->x);
+		offset_Y = ft_abs(list->y - t->y);
+		printf("trying %c and %c \n", t->letter, list->letter);
+			if ((offset_X > 3) || (offset_Y > 3))
+			{
+				printf("s%too far from each other, go NEXT %s\n", RED, RESET);
+				return (1);
+			}
+			while ((ft_mup(ft_mup(ft_mleft(list->t >> offset_X, x), offset_Y), y) & t->t) != 0 && ft_can_we_moveX(t, x, field))
+				x++;
+			if ((ft_mup(ft_mup(ft_mleft(list->t >> offset_X, x), offset_Y), y) & t->t) == 0)
+				res = res | 1;
+			
+	list = list->next;
 	}
-	if ((ft_mup(ft_mleft(t1->t, x) ,y) & (t2->t)) == 0)	
-	{
-		printf("ft_findX: FOUND PLACE FOR %llu!!!", t2->t);
-		printf(" it's x = %zu y = %zu\n", x, y);
-		if(((t1->x + x + 4) >= *field) && ((t2->t>>(t1->x + x) & 4369) != 0))
+	if (res == 0)
 		{
-			printf("*field = %zu\n", *field);
-			printf("t1->x = %zu ", t1->x);
-			printf("x = %zu\n", x);
-			printf("ft_find-X: тетраминка не влазит в ворота! возвращаем 0 \n");
-			return(0);
+			printf("%swe didn't found place for %llu%s\n", RED, t->t, RESET);
+			t->x = 0;
 		}
-		else
+	else 
 		{
-			t2->x = x;
-			t2->y = y;
-			return (1);	
-		}	
-	}
-	if ((((x + 4) >= *field) && ((t2->t>>x & 4369) !=0)) && (((y + 4) >= *field) && (((t2->t>>(y*4)) & 15)!=0)))
-		{
-			printf("ft_find_X: места для %llu не нашлось!\n", t2->t);
-			t2->x = 0;
-			t2->y = 0;
-			return (0);
-		}	
-	if (!ft_can_we_moveX(t2, x, field)) 
-	{
-		printf("We reach Xmax on this column and cant move right anymore, we should increase Y! \n");
-		return (0);
-	}
-	return (ft_find_X(t1, t2, x + 1, y, field));
+			printf("%s found place for %llu %s\n",GREEN, t->t ,RESET);
+			t->x = t->x + x;
+			t->y = t->y + y;
+		}
+	return (res);
 }

@@ -6,11 +6,25 @@
 /*   By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 17:54:06 by mstefani          #+#    #+#             */
-/*   Updated: 2019/11/22 11:03:04 by mstefani         ###   ########.fr       */
+/*   Updated: 2019/11/29 19:02:54 by mstefani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+int		ft_refresh_list(t_tetr* tet)
+{
+	t_tetr* buf;
+
+	buf = tet;
+	while(buf)
+	{
+		buf->x = 0;
+		buf->y = 0;
+		buf = buf->next;
+	}
+	return (1);
+}
 
 int		main(int argc, char **argv)
 {
@@ -19,7 +33,6 @@ int		main(int argc, char **argv)
 	int		fd;
 	int		*tet;
 	int		num_tet;
-//	int 	match;
 	t_tetr	*result;
 	t_tetr	*test;
 
@@ -44,6 +57,8 @@ int		main(int argc, char **argv)
 		num_tet = ft_calc(fd);
 	}
 	field = ft_calc_field(num_tet);
+	if (field < 4)
+		field = 4;
 	result = ft_greate_first_list(tet[0], 'A');
 	test = result;
 	while (++i < num_tet)
@@ -51,11 +66,16 @@ int		main(int argc, char **argv)
 
 	//ft_sort_list(result, ft_descent);
 	ft_print_res(result);
-	ft_puzzle(result, num_tet, &field);
-	
-	printf("===============fillit.c=======================\n");
+    printf("%s=============================================%s\n", YELLOW, RESET);
+	while (!ft_puzzle(result, &field))
+		{
+			ft_print_res(result);
+			printf("%s puzzle not set, INCREASE FIELD %s \n", RED, RESET);
+			ft_refresh_list(result);
+			field++;
+		}
 	ft_print_res(result);
-	printf("===============fillit.c======================\n");
+	printf("%s=============================================%s\n", YELLOW, RESET);
 	print_res(result, field);
 	return (0);
 }

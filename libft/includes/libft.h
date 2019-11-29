@@ -6,7 +6,7 @@
 /*   By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 14:40:49 by mstefani          #+#    #+#             */
-/*   Updated: 2019/11/13 17:44:58 by mstefani         ###   ########.fr       */
+/*   Updated: 2019/11/28 17:02:58 by mstefani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+int					ft_abs(int);
 int					ft_sqrt(int nb);
 int					ft_factorial(int nb);
 void				ft_bzero(void *s, size_t n);

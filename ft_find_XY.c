@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puzzle.c                                        :+:      :+:    :+:   */
+/*   ft_find_XY.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/20 20:54:05 by mstefani          #+#    #+#             */
-/*   Updated: 2019/11/29 18:58:17 by mstefani         ###   ########.fr       */
+/*   Created: 2019/11/25 17:46:39 by mstefani          #+#    #+#             */
+/*   Updated: 2019/11/29 19:01:15 by mstefani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "fillit.h"
 
-
-int		ft_puzzle(t_tetr* list, size_t* field)
+int		ft_find_XY(t_tetr* list, t_tetr* t, size_t* field)
 {
-	t_tetr*	buf;
-
-	buf = list;
 	
-	while (buf && ft_find_XY(list, buf, field))
+if (t->prev == NULL)
 	{
-		printf("%s it was try to set %c%s\n", GREEN, buf->letter, RESET);
-		printf("%s NOW %c, got x = %zu and y = %zu%s\n",GREEN, buf->letter, buf->x, buf->y, RESET);
-		buf = buf->next;
+		printf("%s we dont need to search XY for %llu  it's first element%s\n", GREEN, t->t, RESET);
+		return (1);
 	}
-	if (buf)
-		return(0);
 
+if (ft_find_X(list, t, field))
 	return (1);
-
+if (ft_can_we_moveY(list, t->y, field))
+	ft_find_XY(list, &(t_tetr){t->next, t->prev, t->t, t->x, t->y + 1, t->letter}, field);
+return (0);
 }

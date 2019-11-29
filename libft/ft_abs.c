@@ -1,33 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puzzle.c                                        :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/20 20:54:05 by mstefani          #+#    #+#             */
-/*   Updated: 2019/11/29 18:58:17 by mstefani         ###   ########.fr       */
+/*   Created: 2019/11/28 17:03:41 by mstefani          #+#    #+#             */
+/*   Updated: 2019/11/28 17:05:28 by mstefani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-
-
-int		ft_puzzle(t_tetr* list, size_t* field)
+int     ft_abs(int d)
 {
-	t_tetr*	buf;
-
-	buf = list;
-	
-	while (buf && ft_find_XY(list, buf, field))
-	{
-		printf("%s it was try to set %c%s\n", GREEN, buf->letter, RESET);
-		printf("%s NOW %c, got x = %zu and y = %zu%s\n",GREEN, buf->letter, buf->x, buf->y, RESET);
-		buf = buf->next;
-	}
-	if (buf)
-		return(0);
-
-	return (1);
-
+if (d < 0)
+        return(d * -1);
+return(d);
 }

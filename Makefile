@@ -6,7 +6,7 @@
 #    By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 17:09:34 by mstefani          #+#    #+#              #
-#    Updated: 2019/11/25 17:46:55 by mstefani         ###   ########.fr        #
+#    Updated: 2019/12/02 21:55:29 by mstefani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,6 @@ SRC = fillit.c \
 		ft_list_test.c \
 		ft_not_match.c \
 		ft_find_X.c \
-		ft_find_XY.c \
 		ft_mleft.c \
 		ft_mup.c \
 		ft_puzzle.c \

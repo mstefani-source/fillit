@@ -6,7 +6,7 @@
 /*   By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 17:54:06 by mstefani          #+#    #+#             */
-/*   Updated: 2019/12/02 13:22:26 by mstefani         ###   ########.fr       */
+/*   Updated: 2019/12/04 17:38:55 by mstefani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,11 @@ int		main(int argc, char **argv)
     printf("%s=============================================%s\n", YELLOW, RESET);
 	while (!ft_puzzle(result, &field))
 		{
-			ft_print_res(result);
-			printf("%s puzzle not set, INCREASE FIELD %s \n", RED, RESET);
+			printf("%s puzzle not set, REFRESH COORDS AND INCREASE FIELD now field = %zu %s \n", RED, field + 1, RESET);
 			ft_refresh_list(result);
 			field++;
 		}
+	printf("%s PUZZLE MATCH %s \n", GREEN, RESET);
 	ft_print_res(result);
 	printf("%s=============================================%s\n", YELLOW, RESET);
 	print_res(result, field);

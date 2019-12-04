@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mleft.c                                         :+:      :+:    :+:   */
+/*   ft_can_i_get_X.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/20 16:51:39 by mstefani          #+#    #+#             */
-/*   Updated: 2019/12/04 13:34:09 by mstefani         ###   ########.fr       */
+/*   Created: 2019/12/03 20:34:47 by mstefani          #+#    #+#             */
+/*   Updated: 2019/12/03 20:56:53 by mstefani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_move(int d)
-{
-	return (((d | 34952) ^ 34952) << 1);
-}
+#include "fillit.h"
 
-int		ft_mleft(int d, int offcet)
+int		ft_can_i_get_X(t_tetr* candidat, t_tetr* resident, size_t x, size_t* field)
 {
-	int i = 0;
+	int offset;
 	
-	while (i < offcet)
-	{
-		d = ft_move(d);
-		i++;
-	}
-	return (d);
+	if ((*field - resident->x) >= 4)
+		return (1);
+
+	offset = 4 - (*field - resident->x);
+	if ((candidat->t >> x >> offset & 4369) != 0)
+			return (0);
+return (1);
 }

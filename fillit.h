@@ -6,7 +6,7 @@
 /*   By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 17:56:59 by mstefani          #+#    #+#             */
-/*   Updated: 2019/11/29 19:06:12 by mstefani         ###   ########.fr       */
+/*   Updated: 2019/12/04 14:26:59 by mstefani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,13 @@ void				ft_print_res (t_tetr *result);
 t_tetr				*ft_greate_first_list (int tetr, char letter);
 t_tetr				*ft_add_list (t_tetr *result, int tet, char letter);
 t_tetr				*ft_l (t_tetr *list, int num);
-int					ft_find_X(t_tetr* list, t_tetr* t, size_t* field);
-int					ft_find_XY(t_tetr* list, t_tetr* t, size_t* field);
-int					ft_mleft(int d, int offcet);
+int					ft_find_X(t_tetr* t, size_t* field);
+int					ft_find_XY(t_tetr* t, size_t* field);
+int					ft_mleft(int d, int offset);
 int					ft_mup(int d, int offcet);
 int					ft_puzzle(t_tetr* tet, size_t* field);
 int					print_res(t_tetr* lst, int dlina);
 int					ft_can_we_moveX(t_tetr* t, size_t x, size_t* field);
 int					ft_can_we_moveY(t_tetr* t, size_t y, size_t* field);
+int					ft_can_i_get_X(t_tetr* candidat, t_tetr* resident, size_t x, size_t* field);
 #endif

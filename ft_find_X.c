@@ -6,7 +6,7 @@
 /*   By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 19:07:52 by mstefani          #+#    #+#             */
-/*   Updated: 2019/12/05 21:14:43 by mstefani         ###   ########.fr       */
+/*   Updated: 2019/12/06 19:21:26 by mstefani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		ft_find_X(t_tetr* t, size_t* field)
 	size_t 	offset_X;
 	size_t	offset_XY;
 	int		res = 1;
-	static size_t	x;
+	static size_t	xx = 0;
 
 	if (t->prev)
 		list = t->prev;
@@ -31,24 +31,30 @@ int		ft_find_X(t_tetr* t, size_t* field)
 		offset_XY = t->y >= list->y ? ft_mup(offset_X, t->y - list->y) : offset_X >> ((list->y - t->y) * 4);
 
 		if (((offset_XY & t->t) == 0))
+		{	
+			xx = t->x;
 			res = res | 1;
+		}
+	xx = 0;
 	list = list->prev;
 	}
 
 	if (res == 1)
 	{	
-		x =  t->x;
+		xx =  t->x;
 		return (1);
 	}
 	if (!ft_can_we_moveX(t , 0 ,field))
 	{
 		t->x = 0;
+		xx = 0;
 		return (0);
 	}
 	if (ft_find_X(&(t_tetr){t->next, t->prev, t->t, t->x + 1, t->y, t->letter}, field))
 		{
-		t->x = x;
+		t->x = xx;
 		return(1);
 		}
+	xx = 0; 
 	return(0);
  }

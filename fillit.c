@@ -6,7 +6,7 @@
 /*   By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 17:54:06 by mstefani          #+#    #+#             */
-/*   Updated: 2019/12/04 17:38:55 by mstefani         ###   ########.fr       */
+/*   Updated: 2019/12/07 21:38:37 by mstefani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,19 +63,19 @@ int		main(int argc, char **argv)
 	test = result;
 	while (++i < num_tet)
 		test = ft_add_list(test, tet[i], ('A' + i));
-
-	//ft_sort_list(result, ft_descent);
-	ft_print_res(result);
-    printf("%s=============================================%s\n", YELLOW, RESET);
+//	ft_print_res(result);
+ //   printf("%s=============================================%s\n", YELLOW, RESET);
 	while (!ft_puzzle(result, &field))
 		{
-			printf("%s puzzle not set, REFRESH COORDS AND INCREASE FIELD now field = %zu %s \n", RED, field + 1, RESET);
+//			ft_print_res(result);
+//			printf("%s puzzle not set, REFRESH COORDS AND INCREASE FIELD now field = %zu %s \n", RED, field + 1, RESET);
 			ft_refresh_list(result);
 			field++;
 		}
-	printf("%s PUZZLE MATCH %s \n", GREEN, RESET);
-	ft_print_res(result);
-	printf("%s=============================================%s\n", YELLOW, RESET);
+//	printf("%s PUZZLE MATCH %s \n", GREEN, RESET);
+//	ft_print_res(result);
+//	printf("%s=============================================%s\n", YELLOW, RESET);
 	print_res(result, field);
+	write(1,"\n",1);
 	return (0);
 }

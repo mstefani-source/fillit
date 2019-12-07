@@ -6,7 +6,7 @@
 /*   By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 17:56:59 by mstefani          #+#    #+#             */
-/*   Updated: 2019/12/06 17:05:54 by mstefani         ###   ########.fr       */
+/*   Updated: 2019/12/07 17:58:26 by mstefani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ t_tetr				*ft_l (t_tetr *list, int num);
 int					ft_find_X(t_tetr* t, size_t* field);
 int					ft_find_XY(t_tetr* t, size_t* field);
 int					ft_mleft(int d, int offset);
+int					ft_mright(int d, int offset);
 int					ft_mup(int d, int offcet);
 int					ft_puzzle(t_tetr* tet, size_t* field);
 int					print_res(t_tetr* lst, int dlina);

@@ -6,7 +6,7 @@
 /*   By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 20:54:05 by mstefani          #+#    #+#             */
-/*   Updated: 2019/12/06 19:28:55 by mstefani         ###   ########.fr       */
+/*   Updated: 2019/12/07 21:08:07 by mstefani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,80 +14,59 @@
 
 int		ft_find_XY(t_tetr* t, size_t* field)
 {
-	static int		find_X;
-	static size_t 	y = 0;
-	static size_t	x = 0;
+	int		find_X;
 
-	if (t->prev == NULL)
-		return (1);
-	find_X = ft_find_X(t, field);
-	if (!find_X && !ft_can_we_moveY(t, 0, field))
-			return (0);
-	if (find_X)
-	{
-		y = t->y;
-		x = t->x;
-		return(1);
-	}
-	if (ft_can_we_moveY(t, 0, field))
-		ft_find_XY(&(t_tetr){t->next, t->prev, t->t, t->x, t->y + 1, t->letter}, field);
-	if (find_X)
-	{
-		t->x = x;
-		t->y = y;
-		return(1);
-	}
+	if (t->prev == NULL)            	// начинаем КВН и сразу спрашиваем "а не первая ли это тетраминка?"
+		return (1);						// если первая, то зачем нам искать для неё координаты? пусть остается такая какая есть
+	find_X = ft_find_X(t, field);		// если не первая то давай попробуем найти для неё координату Х
+
+	if (find_X)							// если Х нашелся то всё замечательно
+		return(1);						// возвращяем 1 с текущими координатами нашей тетраминки t->t
+	if (!ft_can_we_moveY(t, 0, field))	// если же Х не нашелся и мы не можем двигать Y 
+		return (0);						// то надо вернуть 0
+
+	t->y++;								// тут мы оказались потому что мы не нашли Х но можем двигать вниз что мы и делаем и вызываем поиск Х с новым У
+	if (ft_find_XY(t, field))			// собственно рекурсия 
+		return(1);						// нашелся ХУ возвращаем 1
 	else
-	{
-		t->y = 0;
-		return(0);
+	{								
+		t->x = 0;						// надо обнулить Х 
+		t->y = 0;						// и У у нашей тетраминки
+		return(0);						// и вернуть ноль
 	}
 }
-int	ft_pod_puzzle(t_tetr* list, size_t* field)
-{
-	t_tetr*		buf = NULL;
-	int			find_XY;
-	int			res = 1;
 
-	buf = list;
-	
-	while (buf->prev && res != 0)
-	{
-		res = 0;
-		find_XY = ft_find_XY(list, field);
-		if (find_XY)
-			res = res | 1;
-		buf = buf->prev;
-	}
-	return (res);
-}
+int		ft_puzzle(t_tetr* list, size_t* field)   // эта функция пытается уложить все тетраминки в текущем поле
+{												     // для этого ей надо 
+	if (list->next == NULL && list->prev == NULL)	 // проверить "может быть это единственная тетраминка"
+		return (1); 								 // если да то ничего ненадо делать, всё уложено
+												 
+	if (!ft_find_XY(list, field))					// вот взял он тетраминку и попытался уложить
+		return (0);									// не получилось вернули 0;
+													// тут интересный момент, по идее надо обнулить координаты этой тетраминки, 
+													// но они опять же по идее должны быть обнулены в ft_find_XY
+													
+	if (list->next == NULL)							// а давай-ка узнаем, вдруг это последняя тетраминка?
+		return (1);									// если да - то всё супер - мы сложили пазл
 
-int		ft_puzzle(t_tetr* list, size_t* field)
-{
-	if (list == NULL)
-		return (1); 
-	
-	if (!ft_pod_puzzle(list, field))
-	{
-		printf("%s%llu is NOT SET!! x = %zu y = %zu %s\n",RED,list->t, list->x, list->y,RESET);
-		return (0);
-	}
-//	printf("%s%llu is SET!! x = %zu y = %zu %s\n",GREEN, list->t, list->x, list->y, RESET);
-	if(ft_puzzle(list->next, field))
-		return (1);
-	else
-	{
-		if (!ft_can_we_moveX(list, 0, field))
-			{
-//				printf("we cant set %llu with x = %zu and y = %zu\n", list->t, list->x + 1, list->y);
-				if (!ft_can_we_moveY(list, 0, field))
-					return(0);
+	if(ft_puzzle(list->next, field))				// если не последняя то значит переходим к следующей
+		return (1);									// вертаем 1
+
+	else												// вот тут начинается трэш, так как у нас не получилось уложится в поле
+	{													// тут мы оказываемся на предыдущей тетраминке (это особенность рекурсии)
+		if (!ft_can_we_moveX(list, 0, field))			// проверяем можем ли мы эту тетраминку двигать влево
+			{											// не можем
+				if (!ft_can_we_moveY(list, 0, field))	// проверяем можем ли мы её двигать вниз
+				{										// не можем 
+					list->x = 0;						// и по идее мы должны обнулить её координаты 
+					list->y = 0;						//
+					return(0);							// и вернуть ноль
+				}							
 				else
-				{
-					list->x = 0;
-					list->y++;
-//					printf("%s increasing y %llu x= %zu y = %zu %s\n", RED, list->t, list->x, list->y, RESET);
-					ft_puzzle(list->next, field);	
+				{										// если же мы можем двигать её вниз то 
+					list->x = 0;						// обнулим её Х
+					list->y++;							// увеличим У
+					ft_puzzle(list->next, field);		// и попытаемся уложить с новыми координатами 
 				}
 			}
 		list->x++;

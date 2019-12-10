@@ -93,8 +93,6 @@ add_executable(fillit
     ft_mleft.c
     ft_mright.c
     ft_mup.c
-    ft_not_match.c
-    ft_print_res.c
-    ft_puzzle.c
+        ft_puzzle.c
     ft_sort_list.c
     print_res.c)

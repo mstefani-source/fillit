@@ -12,66 +12,63 @@
 
 #include "fillit.h"
 
-int		ft_find_XY(t_tetr* t, size_t* field)
+int		ft_find_xy(t_tetr *t, size_t *field)
 {
-	int		find_X;
+	int		find_x;
 
-	if (t->prev == NULL)            	// начинаем КВН и сразу спрашиваем "а не первая ли это тетраминка?"
-		return (1);						// если первая, то зачем нам искать для неё координаты? пусть остается такая какая есть
-	find_X = ft_find_X(t, field);		// если не первая то давай попробуем найти для неё координату Х
-
-	if (find_X)							// если Х нашелся то всё замечательно
-		return(1);						// возвращяем 1 с текущими координатами нашей тетраминки t->t
-	if (!ft_can_we_moveY(t, 0, field))	// если же Х не нашелся и мы не можем двигать Y 
-		return (0);						// то надо вернуть 0
-
-	t->y++;								// тут мы оказались потому что мы не нашли Х но можем двигать вниз что мы и делаем и вызываем поиск Х с новым У
-	if (ft_find_XY(t, field))			// собственно рекурсия 
-		return(1);						// нашелся ХУ возвращаем 1
+	if (t->prev == NULL)
+		return (1);
+	find_x = ft_find_x(t, field);
+	if (find_x)
+		return (1);
+	if (!ft_can_we_movey(t, field))
+		return (0);
+	t->y++;
+	if (ft_find_xy(t, field))
+		return (1);
 	else
-	{								
-		t->x = 0;						// надо обнулить Х 
-		t->y = 0;						// и У у нашей тетраминки
-		return(0);						// и вернуть ноль
+	{
+		t->x = 0;
+		t->y = 0;
+		return (0);
 	}
 }
 
-int		ft_puzzle(t_tetr* list, size_t* field)       // эта функция пытается уложить все тетраминки в текущем поле
-{												     // для этого ей надо 
-	if (list->next == NULL && list->prev == NULL)	 // проверить "может быть это единственная тетраминка"
-		return (1); 								 // если да то ничего ненадо делать, всё уложено
-												 
-	if (!ft_find_XY(list, field))	                // вот взял он тетраминку и попытался уложить
-    {
-	    list->x = 0;                                // не получилось вернули 0;
-	    list->y = 0;                                 // тут интересный момент, по идее надо обнулить координаты этой тетраминки,
-	    return (0);                                  // но они опять же по идее должны быть обнулены в ft_find_XY
-    }
+void	ft_zero(t_tetr *list)
+{
+	list->x = 0;
+	list->y = 0;
+}
 
-													
-	if (list->next == NULL)							// а давай-ка узнаем, вдруг это последняя тетраминка?
-		return (1);									// если да - то всё супер - мы сложили пазл
-
-	if(ft_puzzle(list->next, field))				// если не последняя то значит переходим к следующей
-		return (1);									// вертаем 1
-
-	else												// вот тут начинается трэш, так как у нас не получилось уложится в поле
-	{													// тут мы оказываемся на предыдущей тетраминке (это особенность рекурсии)
-		if (!ft_can_we_moveX(list, 0, field))			// проверяем можем ли мы эту тетраминку двигать влево
-			{											// не можем
-				if (!ft_can_we_moveY(list, 0, field))	// проверяем можем ли мы её двигать вниз
-				{										// не можем 
-					list->x = 0;						// и по идее мы должны обнулить её координаты 
-					list->y = 0;						//
-					return(0);							// и вернуть ноль
-				}							
-				else
-				{										// если же мы можем двигать её вниз то 
-					list->x = 0;						// обнулим её Х
-					list->y++;							// увеличим У
-					ft_puzzle(list->next, field);		// и попытаемся уложить с новыми координатами 
-				}
+int		ft_puzzle(t_tetr *list, size_t *field)
+{
+	if (list->next == NULL && list->prev == NULL)
+		return (1);
+	if (!ft_find_xy(list, field))
+	{
+		ft_zero(list);
+		return (0);
+	}
+	if (list->next == NULL)
+		return (1);
+	if (ft_puzzle(list->next, field))
+		return (1);
+	else
+	{
+		if (!ft_can_we_movex(list, field))
+		{
+			if (!ft_can_we_movey(list, field))
+			{
+				ft_zero(list);
+				return (0);
 			}
+			else
+			{
+				list->x = 0;
+				list->y++;
+				ft_puzzle(list->next, field);
+			}
+		}
 		list->x++;
 		if (ft_puzzle(list, field))
 			return (1);

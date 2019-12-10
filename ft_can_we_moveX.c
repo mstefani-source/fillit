@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_can_we_moveX.c                                  :+:      :+:    :+:   */
+/*   ft_can_we_movex.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-int		ft_can_we_moveX(t_tetr* t, size_t x, size_t* field)
+int		ft_can_we_movex(t_tetr* t, size_t* field)
 {
 	int offset;
 	
@@ -20,7 +20,7 @@ int		ft_can_we_moveX(t_tetr* t, size_t x, size_t* field)
 		return(1);
 	offset = 3 - (*field - 1 - t->x);
 	if ((*field - 1 - t->x) <= 3) 
-		if ((t->t >> x >> offset & 4369) != 0)
+		if ((t->t >> offset & 4369) != 0)
 			return (0);
 return (1);
 }

@@ -12,13 +12,13 @@
 
 #include "fillit.h"
 
-int print_res(t_tetr* lst, int dlina)
+int		print_res(t_tetr *lst, int dlina)
 {
-	int i;
-	char res[dlina * dlina];
-	unsigned long long digits;
-	int tetr_num;
-	int pryg;
+	long long unsigned int	digits;
+	int						tetr_num;
+	int						pryg;
+	int						i;
+	char					res[dlina * dlina];
 
 	i = 0;
 	tetr_num = 0;
@@ -48,7 +48,7 @@ int print_res(t_tetr* lst, int dlina)
 			{
 				i = i + dlina - 4;
 				pryg = 0;
-			}	
+			}
 			pryg++;
 		}
 		tetr_num++;
@@ -56,10 +56,12 @@ int print_res(t_tetr* lst, int dlina)
 	i = 0;
 	while (res[i] != '\0')
 	{
-		if (i % dlina  == 0 && i != 0)
+		if (i % dlina == 0 && i != 0)
 			write(1, "\n", 1);
 		write(1, &res[i], 1);
 		i++;
 	}
-return (0);
+	write(1, "\n", 1);
+	return (0);
+
 }

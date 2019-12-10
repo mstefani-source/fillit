@@ -12,56 +12,73 @@
 
 #include "fillit.h"
 
-int ft_refresh_list(t_tetr *tet) {
-    t_tetr *buf;
+int		ft_refresh_list(t_tetr *tet)
+{
+	t_tetr *buf;
 
-    buf = tet;
-    while (buf) {
-        buf->x = 0;
-        buf->y = 0;
-        buf = buf->next;
-    }
-    return (1);
+	buf = tet;
+	while (buf)
+	{
+		buf->x = 0;
+		buf->y = 0;
+		buf = buf->next;
+	}
+	return (1);
 }
 
-int main(int argc, char **argv) {
-    int i = 0;
-    size_t field;
-    int fd;
-    int *tet;
-    int num_tet;
-    t_tetr *result;
-    t_tetr *test;
+int		ft_check_file(int argc, char *argv)
+{
+	int fd;
 
-    if (argc != 2) {
-        ft_putstr("usage: fillit source_file\n");
-        return (0);
-    }
-    fd = open(argv[1], O_RDONLY);
-    if (fd < 0) {
-        write(1, "can't open file ", 16);
-        ft_putendl(argv[1]);
-        return (0);
-    } else {
-        tet = ft_makeup(fd);
-        if (!tet)
-            return (0);
-        fd = open(argv[1], O_RDONLY);
-        num_tet = ft_calc(fd);
-    }
-    field = ft_calc_field(num_tet);
-    if (field < 4)
-        field = 4;
-    result = ft_greate_first_list(tet[0], 'A');
-    test = result;
-    while (++i < num_tet)
-        test = ft_add_list(test, tet[i], ('A' + i));
-    while (!ft_puzzle(result, &field))
-    {
-        ft_refresh_list(result);
-        field++;
-    }
-    print_res(result, field);
-    write(1, "\n", 1);
-    return (0);
+	if (argc != 2)
+	{
+		ft_putstr("usage: fillit source_file\n");
+		return (0);
+	}
+	fd = open(argv, O_RDONLY);
+	if (fd < 0)
+	{
+		write(1, "can't open file ", 16);
+		ft_putendl(argv);
+		return (0);
+	}
+	return (1);
+}
+
+t_tetr	*ft_make_list(int *tet, int num_tet)
+{
+	t_tetr	*test;
+	t_tetr	*result;
+	int		i;
+
+	i = 0;
+	test = ft_greate_first_list(tet[0], 'A');
+	result = test;
+	while (++i < num_tet)
+		test = ft_add_list(result, tet[i], ('A' + i));
+	return (result);
+}
+
+int		main(int argc, char **argv)
+{
+	int		*tet;
+	int		num_tet;
+	t_tetr	*result;
+	size_t	field;
+
+	if (!ft_check_file(argc, argv[1]))
+		return (0);
+	tet = ft_makeup(open(argv[1], O_RDONLY));
+	if (!tet)
+		return (0);
+	num_tet = ft_calc(open(argv[1], O_RDONLY));
+	field = ft_calc_field(num_tet);
+	result = ft_make_list(tet, num_tet);
+	while (!ft_puzzle(result, &field))
+	{
+		ft_refresh_list(result);
+		field++;
+	}
+	print_res(result, field);
+	return (0);
 }

@@ -34,21 +34,17 @@ typedef struct				s_tetr
 }							t_tetr;
 
 int					*ft_makeup (int fd);
-int					ft_calc (int fd); /* calculate number of tetramoniks */
-int					ft_descent (int a, int b);
-size_t				ft_calc_field (int num_tet); /* calculate minimum field, return side of square */
-void				ft_print_res (t_tetr *result);
+int					ft_calc (int fd);
+size_t				ft_calc_field (int num_tet);
 t_tetr				*ft_greate_first_list (int tetr, char letter);
 t_tetr				*ft_add_list (t_tetr *result, int tet, char letter);
 t_tetr				*ft_l (t_tetr *list, int num);
-int					ft_find_X(t_tetr* t, size_t* field);
-int					ft_find_XY(t_tetr* t, size_t* field);
+int					ft_find_x(t_tetr* t, size_t* field);
 int					ft_mleft(int d, int offset);
 int					ft_mright(int d, int offset);
 int					ft_mup(int d, int offcet);
 int					ft_puzzle(t_tetr* tet, size_t* field);
 int					print_res(t_tetr* lst, int dlina);
-int					ft_can_we_moveX(t_tetr* t, size_t x, size_t* field);
-int					ft_can_we_moveY(t_tetr* t, size_t y, size_t* field);
-int					ft_can_i_get_X(t_tetr* candidat, size_t* field);
+int					ft_can_we_movex(t_tetr* t, size_t* field);
+int					ft_can_we_movey(t_tetr* t, size_t* field);
 #endif

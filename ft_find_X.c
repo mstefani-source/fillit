@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_find_X.c                                        :+:      :+:    :+:   */
+/*   ft_find_x.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,11 +12,11 @@
 
 #include "fillit.h"
 
-int		ft_find_X(t_tetr* t, size_t* field)
+int		ft_find_x(t_tetr* t, size_t* field)
  {
 	t_tetr*	list = NULL;
-	size_t 	offset_X;
-	size_t	offset_XY;
+	size_t 	offset_x;
+	size_t	offset_xy;
 	int		res = 1;
 
 	if (t->prev)
@@ -25,24 +25,23 @@ int		ft_find_X(t_tetr* t, size_t* field)
 	{
 		res = 0;
 		if ((ft_abs(t->y - list->y) > 3) || (ft_abs(t->y - list->y) > 3))
-				res = res | 1;
-		offset_X = t->x >= list->x ? ft_mleft(list->t,(t->x - list->x)) : ft_mright(list->t, (list->x - t->x));
-		offset_XY = t->y >= list->y ? ft_mup(offset_X, t->y - list->y) : offset_X >> ((list->y - t->y) * 4);
-		if (((offset_XY & t->t) == 0))	
+			res = res | 1;
+		offset_x = t->x >= list->x ? ft_mleft(list->t,(t->x - list->x)) : ft_mright(list->t, (list->x - t->x));
+		offset_xy = t->y >= list->y ? ft_mup(offset_x, t->y - list->y) : offset_x >> ((list->y - t->y) * 4);
+		if (((offset_xy & t->t) == 0))
 			res = res | 1;
 	list = list->prev;
 	}
-	if (res == 1)						// всё отлично, мы нашли координату Х для t->t и ниодна другая тетраминка на поле её не пересекает
-		return (1);						// возвращаем 1
-	if (!ft_can_we_moveX(t , 0 ,field)) // если не нашли координату Х то проверяем можем ли мы двинуть t по Х на один шаг
+	if (res == 1)
+		return (1);
+	if (!ft_can_we_movex(t ,field))
 	{
-		t->x = 0;						// всё плохо, мы не можем двинуть то обнуляем координату Х 
-		return (0);						// и возвращаем 0 в функцию findXY чтоб там попытаться увеличить Y
+		t->x = 0;
+		return (0);
 	}
-	// тут мы оказываемся в том случае когда мы не нашли координату Х но можем двигать тетраминку влево поэтому мы увеличиваем координату t->x
 	t->x++;
-	if (ft_find_X(t, field))			// это собственно рекурсия с увеличенной координато Х на один.
+	if (ft_find_x(t, field))
 		return(1);
-	t->x = 0; 					// на всякий случай обнулим еще разок.
+	t->x = 0;
 	return(0);
  }

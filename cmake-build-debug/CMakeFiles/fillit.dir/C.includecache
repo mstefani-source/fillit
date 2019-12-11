@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/victor/21/fillit/fillit.h
+libft/includes/libft.h
+C:/Users/victor/21/fillit/libft/includes/libft.h
+stdio.h
+-
+fcntl.h
+-
+
+C:/Users/victor/21/fillit/ft_puzzle.c
+fillit.h
+C:/Users/victor/21/fillit/fillit.h
+
+C:/Users/victor/21/fillit/libft/includes/libft.h
+string.h
+-
+unistd.h
+-
+stdlib.h
+-
+limits.h
+-
+

@@ -21,8 +21,6 @@ SRC = fillit.c \
 		ft_greate_first_list.c \
 		ft_add_list.c \
 	    ft_l.c \
-		ft_sort_list.c \
-		ft_list_test.c \
 		ft_find_x.c \
 		ft_mleft.c \
 		ft_mright.c \

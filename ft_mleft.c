@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_move(int d)
+unsigned int		ft_move(unsigned int d)
 {
 	return (((d | 34952) ^ 34952) << 1);
 }
 
-int		ft_mleft(int d, int offcet)
+unsigned int		ft_mleft(unsigned int d, int offcet)
 {
 	int i = 0;
 	

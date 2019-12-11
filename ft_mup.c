@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_moveup(int d)
+unsigned int		ft_moveup(unsigned int d)
 {
 	return (((d | 61440) ^ 61440) << 4);
 }
 
-int		ft_mup(int d, int offcet)
+unsigned int		ft_mup(unsigned int d, int offcet)
 {
 	int i = 0;
 	

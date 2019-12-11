@@ -12,36 +12,50 @@
 
 #include "fillit.h"
 
-int		ft_find_x(t_tetr* t, size_t* field)
- {
-	t_tetr*	list = NULL;
-	size_t 	offset_x;
-	size_t	offset_xy;
-	int		res = 1;
+unsigned int	ft_offset_xy(t_tetr *list, t_tetr *t)
+{
+	unsigned int offset_xy;
+	unsigned int linuz_sucks;
+	unsigned int all_sucks;
 
-	if (t->prev)
-		list = t->prev;
-	while (list && res != 0)
+	offset_xy = list->x >= t->x ? ft_mleft(t->t, (list->x - t->x)) \
+				: ft_mright(t->t, (t->x - list->x));
+	linuz_sucks = offset_xy >> ((t->y - list->y) * 4);
+	all_sucks = ft_mup(offset_xy, list->y - t->y);
+	offset_xy = list->y >= t->y ? all_sucks : linuz_sucks;
+	return (offset_xy);
+}
+
+int ft_far(t_tetr *list, t_tetr *t)
+{
+	if ((ft_abs(list->y - t->y) > 3) || (ft_abs(list->y - t->y) > 3))
+		return (1);
+	return (0);
+}
+
+int		ft_find_x(t_tetr *list, size_t *field)
+{
+	t_tetr*		t;
+	int			res;
+
+	t = list->prev;
+	res = 1;
+	while (t && res != 0)
 	{
 		res = 0;
-		if ((ft_abs(t->y - list->y) > 3) || (ft_abs(t->y - list->y) > 3))
+		if (ft_far(list, t) || ((ft_offset_xy(list, t) & list->t) == 0))
 			res = res | 1;
-		offset_x = t->x >= list->x ? ft_mleft(list->t,(t->x - list->x)) : ft_mright(list->t, (list->x - t->x));
-		offset_xy = t->y >= list->y ? ft_mup(offset_x, t->y - list->y) : offset_x >> ((list->y - t->y) * 4);
-		if (((offset_xy & t->t) == 0))
-			res = res | 1;
-	list = list->prev;
+		t = t->prev;
 	}
 	if (res == 1)
 		return (1);
-	if (!ft_can_we_movex(t ,field))
+	if (!ft_can_we_movex(list, field))
 	{
-		t->x = 0;
+		list->x = 0;
 		return (0);
 	}
-	t->x++;
-	if (ft_find_x(t, field))
-		return(1);
-	t->x = 0;
-	return(0);
- }
+	list->x++;
+	if (ft_find_x(list, field))
+		return (1);
+	return (0);
+}

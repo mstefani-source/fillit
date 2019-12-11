@@ -14,15 +14,11 @@
 
 int		ft_find_xy(t_tetr *list, size_t *field)
 {
-	int		find_x;
-
-	if (list->prev == NULL)
-		return (1);
-	find_x = ft_find_x(list, field);
-	if (find_x)
+	if ((list->prev == NULL) || (ft_find_x(list, field)))
 		return (1);
 	if (!ft_can_we_movey(list, field))
 		return (0);
+	list->x = 0;
 	list->y++;
 	if (ft_find_xy(list, field))
 		return (1);

@@ -23,19 +23,24 @@ long long unsigned int	ft_offset_xy(t_tetr *list, t_tetr *t)
 	return (offset_xy);
 }
 
+int ft_far(t_tetr *list, t_tetr *t)
+{
+	if ((ft_abs(list->y - t->y) > 3) || (ft_abs(list->y - t->y) > 3))
+		return (1);
+	return (0);
+}
+
 int		ft_find_x(t_tetr *list, size_t *field)
 {
-	int			res;
 	t_tetr*		t;
+	int			res;
 
 	t = list->prev;
 	res = 1;
 	while (t && res != 0)
 	{
 		res = 0;
-		if ((ft_abs(list->y - t->y) > 3) || (ft_abs(list->y - t->y) > 3))
-			res = res | 1;
-		if (((ft_offset_xy(list, t) & list->t) == 0))
+		if (ft_far(list, t) || ((ft_offset_xy(list, t) & list->t) == 0))
 			res = res | 1;
 		t = t->prev;
 	}
@@ -49,6 +54,5 @@ int		ft_find_x(t_tetr *list, size_t *field)
 	list->x++;
 	if (ft_find_x(list, field))
 		return (1);
-	list->x = 0;
 	return (0);
 }

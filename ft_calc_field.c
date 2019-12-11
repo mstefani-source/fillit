@@ -21,7 +21,6 @@ int		ft_three(int num_tet, int *tet)
 		return (2);
 	flag = 0;
 	while (i < num_tet) {
-
 		if (((61152 | tet[i]) ^ 61152) != 0)
 			flag = flag | 1;
 		i++;

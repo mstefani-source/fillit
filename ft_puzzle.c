@@ -42,19 +42,15 @@ void	ft_zero(t_tetr *list)
 
 int		ft_puzzle(t_tetr *list, size_t *field)
 {
-	if (list->next == NULL && list->prev == NULL)
-		return (1);
 	if (!ft_find_xy(list, field))
 	{
 		ft_zero(list);
 		return (0);
 	}
-	if (list->next == NULL)
-		return (1);
-	if (ft_puzzle(list->next, field))
+	if ((list->next == NULL) || ft_puzzle(list->next, field))
 		return (1);
 	else
-	{
+		{
 		if (!ft_can_we_movex(list, field))
 		{
 			if (!ft_can_we_movey(list, field))
@@ -62,12 +58,9 @@ int		ft_puzzle(t_tetr *list, size_t *field)
 				ft_zero(list);
 				return (0);
 			}
-			else
-			{
 				list->x = 0;
 				list->y++;
 				ft_puzzle(list->next, field);
-			}
 		}
 		list->x++;
 		if (ft_puzzle(list, field))

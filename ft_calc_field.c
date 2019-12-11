@@ -11,13 +11,39 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
+int		ft_three(int num_tet, int *tet)
+{
+	int i;
+	int flag;
 
-size_t	ft_calc_field(int num_tet)
+	i = 0;
+	if (num_tet == 1 && tet[0] == 52224)
+		return (2);
+	flag = 0;
+	while (i < num_tet) {
+
+		if (((61152 | tet[i]) ^ 61152) != 0)
+			flag = flag | 1;
+		i++;
+	}
+	if (flag)
+		return (4);
+	return (3);
+}
+
+size_t	ft_calc_field(int num_tet, int *tet)
 {
 	int	pre;
+	int i;
 
-	pre = num_tet * 4;
-	while (ft_sqrt(pre) == 0)
-		pre++;
-	return (ft_sqrt(pre));
+	pre = 0;
+	i = 0;
+	if (num_tet > 2)
+	{
+		pre = num_tet * 4;
+		while (ft_sqrt(pre) == 0)
+			pre++;
+		return (ft_sqrt(pre));
+	}
+	return (ft_three(num_tet, tet));
 }

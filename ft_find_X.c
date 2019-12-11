@@ -13,7 +13,7 @@
 #include "fillit.h"
 
 int		ft_find_x(t_tetr* t, size_t* field)
- {
+{
 	t_tetr*	list = NULL;
 	size_t 	offset_x;
 	size_t	offset_xy;
@@ -30,7 +30,7 @@ int		ft_find_x(t_tetr* t, size_t* field)
 		offset_xy = t->y >= list->y ? ft_mup(offset_x, t->y - list->y) : offset_x >> ((list->y - t->y) * 4);
 		if (((offset_xy & t->t) == 0))
 			res = res | 1;
-	list = list->prev;
+		list = list->prev;
 	}
 	if (res == 1)
 		return (1);
@@ -44,4 +44,4 @@ int		ft_find_x(t_tetr* t, size_t* field)
 		return(1);
 	t->x = 0;
 	return(0);
- }
+}

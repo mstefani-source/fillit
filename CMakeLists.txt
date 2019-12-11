@@ -84,7 +84,6 @@ add_executable(fillit
     ft_calc_field.c
     ft_can_we_moveX.c
     ft_can_we_moveY.c
-    ft_descent.c
     ft_find_X.c
     ft_greate_first_list.c
     ft_l.c
@@ -93,6 +92,5 @@ add_executable(fillit
     ft_mleft.c
     ft_mright.c
     ft_mup.c
-        ft_puzzle.c
-    ft_sort_list.c
+    ft_puzzle.c
     print_res.c)

@@ -35,7 +35,7 @@ typedef struct				s_tetr
 
 int					*ft_makeup (int fd);
 int					ft_calc (int fd);
-size_t				ft_calc_field (int num_tet);
+size_t				ft_calc_field (int num_tet, int *tet);
 t_tetr				*ft_greate_first_list (int tetr, char letter);
 t_tetr				*ft_add_list (t_tetr *result, int tet, char letter);
 t_tetr				*ft_l (t_tetr *list, int num);

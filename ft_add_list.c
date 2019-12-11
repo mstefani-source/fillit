@@ -29,5 +29,5 @@ t_tetr*		ft_add_list(t_tetr* result, int	tet, char letter)
 	new->x = 0;
 	new->y = 0;
 
-return(result);
+	return(result);
 }

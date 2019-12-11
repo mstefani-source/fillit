@@ -72,7 +72,7 @@ int		main(int argc, char **argv)
 	if (!tet)
 		return (0);
 	num_tet = ft_calc(open(argv[1], O_RDONLY));
-	field = ft_calc_field(num_tet);
+	field = ft_calc_field(num_tet, tet);
 	result = ft_make_list(tet, num_tet);
 	while (!ft_puzzle(result, &field))
 	{

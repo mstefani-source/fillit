@@ -17,8 +17,9 @@ unsigned int		ft_moveup(unsigned int d)
 
 unsigned int		ft_mup(unsigned int d, int offcet)
 {
-	int i = 0;
-	
+	int i;
+
+	i = 0;
 	while (i < offcet)
 	{
 		d = ft_moveup(d);

@@ -12,10 +12,11 @@
 
 #include "fillit.h"
 
-t_tetr*  ft_l(t_tetr* list, int num)
+t_tetr	*ft_l(t_tetr *list, int num)
 {
-	int i = 0;
+	int i;
 
+	i = 0;
 	while (i < num)
 	{
 		list = list->next;

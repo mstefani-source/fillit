@@ -43,15 +43,15 @@ int		ft_error(int k)
 	return (1);
 }
 
-int		*ft_makeup(int fd)
+unsigned int		*ft_makeup(int fd)
 {
-	static char	*str;
-	char		buf[BUFF_SIZE + 1];
-	int			ret;
-	int			i;
-	int			*new;
-	int			k;
-	int			j;
+	static char		*str;
+	char			buf[BUFF_SIZE + 1];
+	int				ret;
+	int				i;
+	unsigned int	*new;
+	int				k;
+	int				j;
 
 	i = 0;
 	j = 0;
@@ -73,8 +73,11 @@ int		*ft_makeup(int fd)
 			j++;
 		i++;
 	}
-	if (!(new = (int*)malloc(sizeof(int) * (j + 1))))
+	if (!(new = (unsigned int*)malloc(sizeof(unsigned int) * j)))
+	{
+		free (new);
 		return (0);
+	}
 	i = 0;
 	j = 0;
 	while (str[i] != '\0')

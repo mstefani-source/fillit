@@ -12,11 +12,11 @@
 
 #include "fillit.h"
 
-t_tetr		*ft_greate_first_list(int tetr, char letter)
+t_tetr		*ft_greate_first_list(unsigned int tetr, char letter)
 {
 	t_tetr	*ttetr;
 
-	ttetr = malloc(sizeof(t_tetr));
+	ttetr = (t_tetr*)malloc(sizeof(t_tetr));
 	if (!ttetr)
 		return (0);
 	ttetr->next = NULL;

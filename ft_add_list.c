@@ -10,16 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "fillit.h"
 
-t_tetr*		ft_add_list(t_tetr* result, int	tet, char letter)
+t_tetr	*ft_add_list(t_tetr *result, unsigned int tet, char letter)
 {
-	t_tetr*		new;
+	t_tetr *new;
 
 	while (result->next != NULL)
 		result = result->next;
-
 	new = malloc(sizeof(t_tetr));
 	result->next = new;
 	new->prev = result;
@@ -28,6 +26,5 @@ t_tetr*		ft_add_list(t_tetr* result, int	tet, char letter)
 	new->t = tet;
 	new->x = 0;
 	new->y = 0;
-
-return(result);
+	return (result);
 }

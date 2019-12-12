@@ -45,15 +45,15 @@ int		ft_check_file(int argc, char *argv)
 	return (1);
 }
 
-t_tetr	*ft_make_list(int *tet, int num_tet)
+t_tetr	*ft_make_list(unsigned int *tet, size_t num_tet)
 {
 	t_tetr	*test;
 	t_tetr	*result;
-	int		i;
+	size_t 	i;
 
 	i = 0;
-	test = ft_greate_first_list(tet[0], 'A');
-	result = test;
+	result = ft_greate_first_list(tet[0], 'A');
+	test = result;
 	while (++i < num_tet)
 		test = ft_add_list(result, tet[i], ('A' + i));
 	return (result);
@@ -61,10 +61,10 @@ t_tetr	*ft_make_list(int *tet, int num_tet)
 
 int		main(int argc, char **argv)
 {
-	int		*tet;
-	int		num_tet;
-	t_tetr	*result;
-	size_t	field;
+	unsigned int	*tet;
+	size_t 			num_tet;
+	t_tetr			*result;
+	size_t			field;
 
 	if (!ft_check_file(argc, argv[1]))
 		return (0);
@@ -74,11 +74,13 @@ int		main(int argc, char **argv)
 	num_tet = ft_calc(open(argv[1], O_RDONLY));
 	field = ft_calc_field(num_tet, tet);
 	result = ft_make_list(tet, num_tet);
+	ft_memdel((void*)&tet);
 	while (!ft_puzzle(result, &field))
 	{
 		ft_refresh_list(result);
 		field++;
 	}
 	print_res(result, field);
+	ft_free_list(result);
 	return (0);
 }

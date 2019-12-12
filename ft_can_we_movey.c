@@ -12,12 +12,12 @@
 
 #include "fillit.h"
 
-int		ft_can_we_movey(t_tetr* t, size_t* field)
+int		ft_can_we_movey(t_tetr *t, size_t *field)
 {
 	if (*field - t->y > 4)
-		return(1);
+		return (1);
 	if (*field - 1 - t->y <= 3)
-		if (((t->t >> ((4 - (*field - t->y)) * 4)) & 15) !=0)
-		 return (0);
-return (1);
+		if (((t->t >> ((4 - (*field - t->y)) * 4)) & 15) != 0)
+			return (0);
+	return (1);
 }

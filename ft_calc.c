@@ -12,23 +12,20 @@
 
 #include "fillit.h"
 
-int		ft_calc(int fd)
+size_t	ft_calc(int fd)
 {
-	static char	*str;
+	char		*str;
 	char		buf[BUFF_SIZE + 1];
 	int			ret;
 	int			i;
-	int			j;
+	size_t		j;
 
 	j = 0;
 	i = 0;
-	if (str == NULL)
-		str = ft_strnew(0);
-	while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
-	{
-		buf[ret] = '\0';
-		str = ft_join_and_free(&str, buf);
-	}
+	ret = read(fd, buf, BUFF_SIZE);
+	buf[ret] = '\0';
+	str = ft_strdup(buf);
+
 	while (str[i] != '\0')
 	{
 		if (str[i] == '\n' && str[i + 1] == '\n')
@@ -37,6 +34,7 @@ int		ft_calc(int fd)
 			j++;
 		i++;
 	}
+	ft_memdel((void*)&str);
 	close(fd);
 	return (j);
 }

@@ -11,7 +11,8 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
-int		ft_three(int num_tet, int *tet)
+
+int		ft_three(int num_tet, unsigned int *tet)
 {
 	int i;
 	int flag;
@@ -20,7 +21,8 @@ int		ft_three(int num_tet, int *tet)
 	if (num_tet == 1 && tet[0] == 52224)
 		return (2);
 	flag = 0;
-	while (i < num_tet) {
+	while (i < num_tet)
+	{
 		if (((61152 | tet[i]) ^ 61152) != 0)
 			flag = flag | 1;
 		i++;
@@ -30,7 +32,7 @@ int		ft_three(int num_tet, int *tet)
 	return (3);
 }
 
-size_t	ft_calc_field(int num_tet, int *tet)
+size_t	ft_calc_field(int num_tet, unsigned int *tet)
 {
 	int	pre;
 

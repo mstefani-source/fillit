@@ -17,8 +17,9 @@ unsigned int		ft_move(unsigned int d)
 
 unsigned int		ft_mleft(unsigned int d, int offcet)
 {
-	int i = 0;
-	
+	int i;
+
+	i = 0;
 	while (i < offcet)
 	{
 		d = ft_move(d);

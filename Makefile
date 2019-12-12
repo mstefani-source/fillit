@@ -20,7 +20,7 @@ SRC = fillit.c \
 		ft_calc_field.c \
 		ft_greate_first_list.c \
 		ft_add_list.c \
-	    ft_l.c \
+		ft_l.c \
 		ft_find_x.c \
 		ft_mleft.c \
 		ft_mright.c \
@@ -28,7 +28,8 @@ SRC = fillit.c \
 		ft_puzzle.c \
 		print_res.c \
 		ft_can_we_movex.c \
-		ft_can_we_movey.c
+		ft_can_we_movey.c \
+		ft_free_list.c
 
 LIBOBJ=$(SRC:.c=.o)
 

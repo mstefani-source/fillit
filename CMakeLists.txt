@@ -21,8 +21,6 @@ add_executable(fillit
     libft/ft_isprint.c
     libft/ft_isupper.c
     libft/ft_itoa.c
-    libft/ft_itoa_b.c
-    libft/ft_itoa_base.c
     libft/ft_join_and_free.c
     libft/ft_leni.c
     libft/ft_lstadd.c
@@ -82,17 +80,15 @@ add_executable(fillit
     ft_add_list.c
     ft_calc.c
     ft_calc_field.c
-    ft_can_we_moveX.c
-    ft_can_we_moveY.c
-    ft_descent.c
-    ft_find_X.c
+    ft_can_we_movex.c
+    ft_can_we_movey.c
+    ft_find_x.c
     ft_greate_first_list.c
     ft_l.c
-    ft_list_test.c
     ft_makeup.c
     ft_mleft.c
     ft_mright.c
     ft_mup.c
-        ft_puzzle.c
-    ft_sort_list.c
+    ft_puzzle.c
+    ft_free_list.c
     print_res.c)

@@ -14,18 +14,24 @@
 
 size_t	ft_calc(int fd)
 {
-	char		*str;
-	char		buf[BUFF_SIZE + 1];
-	int			ret;
-	int			i;
-	size_t		j;
+	char	*str;
+	char	buf[1];
+	int		ret;
+	int		i;
+	size_t	j;
 
 	j = 0;
 	i = 0;
-	ret = read(fd, buf, BUFF_SIZE);
-	buf[ret] = '\0';
-	str = ft_strdup(buf);
-
+	str = NULL;
+	while ((ret = read(fd, buf, 2) >= 0))
+	{
+		buf[ret] = '\0';
+		if (str == NULL)
+			str = ft_strdup(buf);
+		else
+			str = ft_join_and_free(&str, buf);
+	}
+	printf("%s\n",str);
 	while (str[i] != '\0')
 	{
 		if (str[i] == '\n' && str[i + 1] == '\n')

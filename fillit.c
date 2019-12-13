@@ -81,6 +81,6 @@ int		main(int argc, char **argv)
 		field++;
 	}
 	print_res(result, field);
-	ft_free_list(result);
+//	ft_free_list(result);
 	return (0);
 }

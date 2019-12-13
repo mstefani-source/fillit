@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-t_tetr	*ft_add_list(t_tetr *result, unsigned int tet, char letter)
+void	ft_add_list(t_tetr *result, unsigned int tet, char letter)
 {
 	t_tetr *new;
 
@@ -26,5 +26,4 @@ t_tetr	*ft_add_list(t_tetr *result, unsigned int tet, char letter)
 	new->t = tet;
 	new->x = 0;
 	new->y = 0;
-	return (result);
 }

@@ -37,7 +37,7 @@ unsigned int		*ft_makeup (int fd);
 size_t				ft_calc (int fd);
 size_t				ft_calc_field (int num_tet, unsigned int *tet);
 t_tetr				*ft_greate_first_list (unsigned int tetr, char letter);
-t_tetr				*ft_add_list (t_tetr *result, unsigned int tet, char letter);
+void 				ft_add_list (t_tetr *result, unsigned int tet, char letter);
 t_tetr				*ft_l (t_tetr *list, int num);
 int					ft_find_x(t_tetr *t, size_t *field);
 int					ft_mleft(int d, int offset);

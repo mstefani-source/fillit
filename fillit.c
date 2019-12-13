@@ -47,15 +47,13 @@ int		ft_check_file(int argc, char *argv)
 
 t_tetr	*ft_make_list(unsigned int *tet, size_t num_tet)
 {
-	t_tetr	*test;
 	t_tetr	*result;
 	size_t 	i;
 
 	i = 0;
 	result = ft_greate_first_list(tet[0], 'A');
-	test = result;
 	while (++i < num_tet)
-		test = ft_add_list(result, tet[i], ('A' + i));
+		ft_add_list(result, tet[i], ('A' + i));
 	return (result);
 }
 

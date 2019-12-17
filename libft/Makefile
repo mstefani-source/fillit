@@ -26,7 +26,6 @@ SRC = ft_atoi.c \
 		ft_isprint.c \
 		ft_isupper.c \
 		ft_itoa.c \
-		ft_itoa_b.c \
 		ft_join_and_free.c \
 		ft_leni.c \
 		ft_lstadd.c \
@@ -81,7 +80,6 @@ SRC = ft_atoi.c \
 		ft_strtrim.c \
 		ft_tolower.c \
 		ft_toupper.c \
-		ft_itoa_base.c \
 		ft_abs.c
 		
 CFLAGS = -Wall -Werror -Wextra
@@ -90,7 +88,7 @@ OBJ=$(SRC:.c=.o)
 
 all: $(NAME) 
 
-$(NAME): $(OBJ) $(SRC) includes/libft.h
+$(NAME): $(OBJ) $(SRC) ../libft.h
 	gcc -c $(CFLAGS) $(SRC) -I $(HEADERS)
 	ar rc $(NAME) $?
 	ranlib $(NAME) 

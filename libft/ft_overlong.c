@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "../libft.h"
 
 int		ft_overlong(long int d, int sign, char c)
 {

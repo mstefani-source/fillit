@@ -29,7 +29,8 @@ SRC = fillit.c \
 		print_res.c \
 		ft_can_we_movex.c \
 		ft_can_we_movey.c \
-		ft_free_list.c
+		ft_free_list.c \
+		schet1.c
 
 LIBOBJ=$(SRC:.c=.o)
 

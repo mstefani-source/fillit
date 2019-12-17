@@ -18,10 +18,14 @@ unsigned int	ft_offset_xy(t_tetr *list, t_tetr *t)
 	unsigned int var_for_linuz_gcc_1;
 	unsigned int var_for_linuz_gcc_2;
 
-	offset_xy = list->x >= t->x ? ft_mleft(t->t, (list->x - t->x)) \
-	: ft_mright(t->t, (t->x - list->x));
+	offset_xy = list->x >= t->x ? ft_mleft(t->t, (list->x - t->x)) : ft_mright(t->t, (t->x - list->x));
+
+
+
 	var_for_linuz_gcc_1 = offset_xy >> (ft_abs((t->y - list->y)) * 4);
 	var_for_linuz_gcc_2 = ft_mup(offset_xy, list->y - t->y);
+
+
 	offset_xy = list->y >= t->y ? var_for_linuz_gcc_2 : var_for_linuz_gcc_1;
 	return (offset_xy);
 }
@@ -57,5 +61,6 @@ int				ft_find_x(t_tetr *list, size_t *field)
 	list->x++;
 	if (ft_find_x(list, field))
 		return (1);
+	list->x = 0;
 	return (0);
 }

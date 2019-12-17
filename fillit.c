@@ -6,7 +6,7 @@
 /*   By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 17:54:06 by mstefani          #+#    #+#             */
-/*   Updated: 2019/12/07 21:38:37 by mstefani         ###   ########.fr       */
+/*   Updated: 2019/12/14 19:04:03 by mstefani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,27 +47,27 @@ int		ft_check_file(int argc, char *argv)
 
 t_tetr	*ft_make_list(unsigned int *tet, size_t num_tet)
 {
+	t_tetr	*test;
 	t_tetr	*result;
-	size_t 	i;
+	size_t	i;
 
 	i = 0;
 	result = ft_greate_first_list(tet[0], 'A');
+	test = result;
 	while (++i < num_tet)
-		ft_add_list(result, tet[i], ('A' + i));
+		test = ft_add_list(result, tet[i], ('A' + i));
 	return (result);
 }
 
 int		main(int argc, char **argv)
 {
 	unsigned int	*tet;
-	size_t 			num_tet;
+	size_t			num_tet;
 	t_tetr			*result;
 	size_t			field;
 
-	if (!ft_check_file(argc, argv[1]))
-		return (0);
-	tet = ft_makeup(open(argv[1], O_RDONLY));
-	if (!tet)
+	if ((!ft_check_file(argc, argv[1])) \
+			|| (!((tet = ft_makeup(open(argv[1], O_RDONLY))))))
 		return (0);
 	num_tet = ft_calc(open(argv[1], O_RDONLY));
 	field = ft_calc_field(num_tet, tet);
@@ -79,6 +79,6 @@ int		main(int argc, char **argv)
 		field++;
 	}
 	print_res(result, field);
-//	ft_free_list(result);
+	ft_free_list(result);
 	return (0);
 }

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "../libft.h"
 
 static int	ft_word_num(char const *s, char c)
 {
@@ -48,7 +48,10 @@ static char	**ft_tabledel(char **ret, int len)
 
 	i = 0;
 	while (i < len)
+	{
 		free(ret[i]);
+		i++;
+	}
 	free(ret);
 	return (NULL);
 }

@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   schet1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skale <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/11 14:33:20 by mstefani          #+#    #+#             */
-/*   Updated: 2019/09/22 16:08:30 by mstefani         ###   ########.fr       */
+/*   Created: 2019/12/14 15:41:18 by skale             #+#    #+#             */
+/*   Updated: 2019/12/14 15:48:02 by skale            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "fillit.h"
 
-void	ft_bzero(void *s, size_t n)
+int		schet1(char *str)
 {
-	size_t			i;
-	unsigned char	*f;
+	int	j;
+	int	i;
 
-	f = (unsigned char*)s;
 	i = 0;
-	while (i - n)
+	j = 0;
+	while (str[i] != '\0')
 	{
-		f[i] = '\0';
+		if (str[i] == '.')
+			str[i] = '0';
+		if (str[i] == '#')
+			str[i] = '1';
+		if (str[i] == '\n' && (str[i + 1] == '\n' || str[i + 1] == '\0'))
+			j++;
 		i++;
 	}
+	return (j);
 }

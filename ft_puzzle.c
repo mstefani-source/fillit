@@ -6,30 +6,30 @@
 /*   By: mstefani <mstefani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 20:54:05 by mstefani          #+#    #+#             */
-/*   Updated: 2019/12/07 21:08:07 by mstefani         ###   ########.fr       */
+/*   Updated: 2019/12/14 14:42:01 by mstefani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		ft_find_xy(t_tetr *t, size_t *field)
+int		ft_find_xy(t_tetr *list, size_t *field)
 {
 	int		find_x;
 
-	if (t->prev == NULL)
+	if (list->prev == NULL)
 		return (1);
-	find_x = ft_find_x(t, field);
+	find_x = ft_find_x(list, field);
 	if (find_x)
 		return (1);
-	if (!ft_can_we_movey(t, field))
+	if (!ft_can_we_movey(list, field))
 		return (0);
-	t->y++;
-	if (ft_find_xy(t, field))
+	list->y++;
+	if (ft_find_xy(list, field))
 		return (1);
 	else
 	{
-		t->x = 0;
-		t->y = 0;
+		list->x = 0;
+		list->y = 0;
 		return (0);
 	}
 }
@@ -38,6 +38,27 @@ void	ft_zero(t_tetr *list)
 {
 	list->x = 0;
 	list->y = 0;
+}
+
+int		ft_fuck_norme(t_tetr *list, size_t *field)
+{
+	if (!ft_can_we_movex(list, field))
+	{
+		if (!ft_can_we_movey(list, field))
+		{
+			ft_zero(list);
+			return (0);
+		}
+		list->x = 0;
+		list->y++;
+		if (ft_puzzle(list, field))
+			return (1);
+		return (0);
+	}
+	list->x++;
+	if (ft_puzzle(list, field))
+		return (1);
+	return (0);
 }
 
 int		ft_puzzle(t_tetr *list, size_t *field)
@@ -50,21 +71,5 @@ int		ft_puzzle(t_tetr *list, size_t *field)
 	if (list->next == NULL || ft_puzzle(list->next, field))
 		return (1);
 	else
-	{
-		if (!ft_can_we_movex(list, field))
-		{
-			if (!ft_can_we_movey(list, field))
-			{
-				ft_zero(list);
-				return (0);
-			}
-			list->x = 0;
-			list->y++;
-			ft_puzzle(list->next, field);
-		}
-		list->x++;
-		if (ft_puzzle(list, field))
-			return (1);
-		return (0);
-	}
+		return (ft_fuck_norme(list, field));
 }
